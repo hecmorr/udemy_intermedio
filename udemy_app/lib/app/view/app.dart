@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_app/counter/counter.dart';
+import 'package:udemy_app/config/config.dart';
 import 'package:udemy_app/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -7,16 +7,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
-        colorScheme: ColorScheme.fromSwatch(
-          accentColor: const Color(0xFF13B9FF),
-        ),
-      ),
+    return MaterialApp.router(
+      routerConfig: appRouter,
+      theme: AppTheme().getTheme() ,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
     );
   }
 }
