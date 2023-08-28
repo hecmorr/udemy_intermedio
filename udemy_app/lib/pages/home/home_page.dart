@@ -25,7 +25,9 @@ class _HomeView extends StatelessWidget {
     return ListView(
       children: const [
         _CustomListTile(title: 'State Provider', subtitle: 'Simple state', location: '/state-provider'),
-        _CustomListTile(title: 'Future Provider', subtitle: 'Simple state + Family', location: '/future-provider')
+        _CustomListTile(title: 'Future Provider', subtitle: 'Simple state + Family', location: '/future-provider'),
+        _CustomListTile(title: 'Stream Provider', subtitle: 'Simple Stream', location: '/stream-provider'),
+        _CustomListTile(title: 'State Notifier Provider', subtitle: 'Simple State Notifier', location: '/state-notifier-provider')
       ],
     );
   }

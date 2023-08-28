@@ -15,7 +15,15 @@ final appRouter  = GoRouter(
     GoRoute(
       path: '/future-provider',
       builder: (context, state) => const PokemonPage(),
-    ),   
+    ),
+    GoRoute(
+      path: '/stream-provider',
+      builder: (context, state) => const StreamPage(),
+    ),     
+        GoRoute(
+      path: '/state-notifier-provider',
+      builder: (context, state) => const TodosPage(),
+    ),     
   ], 
   );
   

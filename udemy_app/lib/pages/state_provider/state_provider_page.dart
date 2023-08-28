@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:udemy_app/pages/providers/random_name_provider.dart';
+import 'package:udemy_app/providers/random_name_provider.dart';
 
 class StateProviderPage extends ConsumerWidget {
   const StateProviderPage({super.key});

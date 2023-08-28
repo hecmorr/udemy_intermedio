@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:udemy_app/pages/providers/pokemon_provider.dart';
+import 'package:udemy_app/providers/pokemon_provider.dart';
 
 class PokemonPage extends ConsumerWidget {
   const PokemonPage({super.key});
@@ -9,7 +9,7 @@ class PokemonPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final pokemonId = ref.watch(pokemonIdProvider);
-    final pokemonAsync = ref.watch(pokemonNameProvider(pokemonId));
+    final pokemonAsync = ref.watch(pokemonNameProvider);
 
     return Scaffold(
       appBar: AppBar(
