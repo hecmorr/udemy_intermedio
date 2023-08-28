@@ -24,7 +24,8 @@ class _HomeView extends StatelessWidget {
 
     return ListView(
       children: const [
-        _CustomListTile(title: 'Provider', subtitle: 'Simple state', location: '/state-provider')
+        _CustomListTile(title: 'State Provider', subtitle: 'Simple state', location: '/state-provider'),
+        _CustomListTile(title: 'Future Provider', subtitle: 'Simple state + Family', location: '/future-provider')
       ],
     );
   }
@@ -33,6 +34,7 @@ class _HomeView extends StatelessWidget {
 class _CustomListTile extends StatelessWidget {
 
   const _CustomListTile({required this.title, required this.subtitle, required this.location});
+  
 
   final String title;
   final String subtitle;
@@ -40,8 +42,9 @@ class _CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final titleStyle = Theme.of(context).textTheme.titleMedium;
     return ListTile(
-      title: Text(title),
+      title: Text(title,style: titleStyle,),
       subtitle: Text(subtitle),
       trailing: const Icon(Icons.arrow_forward_ios),
       onTap: ()=> context.push(location),
