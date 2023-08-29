@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miscelaneos/config/theme/app_theme.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -14,9 +15,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+
+    final titleStyle = Theme.of(context).textTheme.titleMedium;
+
+    return Scaffold(
       body: Center(
-        child: Text('Flutter app'),
+        child: Text('Flutter app', style: titleStyle,),
       ),
     );
   }
