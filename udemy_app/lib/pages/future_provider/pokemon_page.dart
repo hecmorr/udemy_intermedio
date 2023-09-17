@@ -7,9 +7,8 @@ class PokemonPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final pokemonId = ref.watch(pokemonIdProvider);
-    final pokemonAsync = ref.watch(pokemonNameProvider);
+    final pokemonAsync = ref.watch(pokemonProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -17,34 +16,47 @@ class PokemonPage extends ConsumerWidget {
       ),
       body: Center(
         child: pokemonAsync.when(
-          data: Text.new, 
-          error: (error, stackTrace) => Text('Error: $error'), 
-          loading: ()=> const CircularProgressIndicator() ,
+          data: (data) => Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(data.name),
+              Image.network(data.imgUrl),
+            ],
+          ),
+          error: (error, stackTrace) => Text('Error: $error'),
+          loading: () => const CircularProgressIndicator(),
         ),
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          fabState(Icons.exposure_plus_1_outlined, () {
-            ref.read(pokemonIdProvider.notifier).update((state) => state + 1);
-           },'1'),
+          fabState(
+            Icons.exposure_plus_1_outlined,
+            () {
+              ref.read(pokemonIdProvider.notifier).update((state) => state + 1);
+            },
+            '1',
+          ),
           const SizedBox(height: 10),
-          fabState(Icons.exposure_minus_1_outlined, () { 
-            ref.read(pokemonIdProvider.notifier).update((state) {
-              if(state == 0){
-                throw Exception('No puede ser menor que 0');
-              }
-              return state - 1;
-            });
-          },'2'),
+          fabState(
+            Icons.exposure_minus_1_outlined,
+            () {
+              ref.read(pokemonIdProvider.notifier).update((state) {
+                if (state == 0) {
+                  throw Exception('No puede ser menor que 0');
+                }
+                return state - 1;
+              });
+            },
+            '2',
+          ),
         ],
       ),
     );
   }
 }
 
-
-Widget fabState(IconData icon, VoidCallback callback, String heroTag){
+Widget fabState(IconData icon, VoidCallback callback, String heroTag) {
   return FloatingActionButton(
     heroTag: heroTag,
     onPressed: callback,

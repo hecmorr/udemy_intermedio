@@ -19,9 +19,4 @@ class Todo {
     description: description ?? this.description,
     completedAt: completedAt,
     );
-
-
-
-
-  
 }
